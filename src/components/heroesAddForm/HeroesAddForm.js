@@ -1,34 +1,43 @@
+import { v4 as uuidv4 } from 'uuid';
+import { useEffect,useState } from 'react';
 import {useHttp} from '../../hooks/http.hook';
-import { useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { heroesFetching, heroesFetched, heroesFetchingError } from '../../actions';
-// Задача для этого компонента:
-// Реализовать создание нового героя с введенными данными. Он должен попадать
-// в общее состояние и отображаться в списке + фильтроваться
-// Уникальный идентификатор персонажа можно сгенерировать через uiid
-// Усложненная задача:
-// Персонаж создается и в файле json при помощи метода POST
-// Дополнительно:
-// Элементы <option></option> желательно сформировать на базе
-// данных из фильтров
+import { heroesFetchingError, creactHeroesFetched, filtersFetched } from '../../actions';
+
 
 const HeroesAddForm = () => {
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
+    const [element, setElement] = useState('')
     const {request} = useHttp();
     const dispatch = useDispatch();
+    const {filters} = useSelector(state => state.filters);
+    useEffect(()=>{
+        request("http://localhost:3001/filters")
+            .then(data => dispatch(filtersFetched(data)))
+    },[])
+    const clearForm = () =>{
+        setName('')
+        setDescription('')
+        setElement('')
+    }
     const addHeroes = (e) =>{
         e.preventDefault()
             let body = {
-                "id": 10,
-                "name": "Первый герой",
-                "description": "Первый герой в рейтинге!",
-                "element": "fire"
+                "id": uuidv4(),
+                "name": name,
+                "description": description,
+                "element": element
             }
 
         request("http://localhost:3001/heroes","POST",  JSON.stringify(body))
-            .then(data => console.log(data))
-            // .catch(() => dispatch(heroesFetchingError()))
+            .then(data => {
+                dispatch(creactHeroesFetched(data))
+                clearForm()
+            })
+            .catch(() => dispatch(heroesFetchingError()))
     }
-    
     return (
         <form onSubmit={e=>addHeroes(e)} className="border p-4 shadow-lg rounded">
             <div className="mb-3">
@@ -39,7 +48,9 @@ const HeroesAddForm = () => {
                     name="name" 
                     className="form-control" 
                     id="name" 
-                    placeholder="Как меня зовут?"/>
+                    placeholder="Как меня зовут?"
+                    onChange={e=>setName(e.target.value)}
+                    value={name}/>
             </div>
 
             <div className="mb-3">
@@ -50,7 +61,9 @@ const HeroesAddForm = () => {
                     className="form-control" 
                     id="text" 
                     placeholder="Что я умею?"
-                    style={{"height": '130px'}}/>
+                    style={{"height": '130px'}}
+                    onChange={e=>setDescription(e.target.value)}
+                    value={description}/>
             </div>
 
             <div className="mb-3">
@@ -59,12 +72,14 @@ const HeroesAddForm = () => {
                     required
                     className="form-select" 
                     id="element" 
-                    name="element">
+                    name="element"
+                    value={element}
+                    onChange={(e)=>setElement(e.target.value)}>
                     <option >Я владею элементом...</option>
-                    <option value="fire">Огонь</option>
-                    <option value="water">Вода</option>
-                    <option value="wind">Ветер</option>
-                    <option value="earth">Земля</option>
+                    {filters.map(filter=>{
+                        if(filter.value === 'all') return
+                        return <option key={filter.value} value={filter.value}>{filter.label}</option>
+                    })}
                 </select>
             </div>
 
