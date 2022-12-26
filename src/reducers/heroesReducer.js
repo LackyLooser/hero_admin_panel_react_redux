@@ -3,7 +3,7 @@ const initialState = {
     heroesLoadingStatus: 'idle'
 }
 
-const heroesReducer = (state = initialState, action) => {
+const heroes = (state = initialState, action) => {
     switch (action.type) {
         case 'HEROES_FETCHING':
             return {
@@ -27,8 +27,14 @@ const heroesReducer = (state = initialState, action) => {
                 ...state,
                 heroesLoadingStatus: 'error'
             }
+        case 'DELETE_HEROES_FETCHED':
+            return {
+                ...state,
+                heroes: state.heroes.filter(hero=> hero.id !== action.payload),
+                heroesLoadingStatus: 'idle'
+            }
         default: return state
     }
 }
 
-export default heroesReducer;
+export default heroes;

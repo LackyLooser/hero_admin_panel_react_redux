@@ -24,6 +24,13 @@ export const creactHeroesFetched = (hero) => {
     }
 }
 
+export const deleteHeroesFetched = (id) => {
+    return {
+        type: 'DELETE_HEROES_FETCHED',
+        payload: id
+    }
+}
+
 export const filtersFetched = (filters) => {
     return {
         type: 'FILTERS_FETCHED',
@@ -35,6 +42,18 @@ export const filtersActive = (active) => {
     return {
         type: 'FILTERS_ACTIVE',
         payload: active
+    }
+}
+
+export const filtersFetching = () => {
+    return {
+        type: 'FILTERS_FETCHING',
+    }
+}
+
+export const filtersFetchingError = () => {
+    return {
+        type: 'FILTERS_FETCHING_ERROR',
     }
 }
 

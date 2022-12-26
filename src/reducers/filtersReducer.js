@@ -4,8 +4,13 @@ const initialState = {
     filtersLoadingStatus: 'idle'
 }
 
-const filtersReducer = (state = initialState, action) => {
+const filters = (state = initialState, action) => {
     switch (action.type) {
+        case 'FILTERS_FETCHING':
+            return {
+                ...state,
+                filtersLoadingStatus: 'loading'
+            }
         case 'FILTERS_FETCHED':
             return {
                 ...state,
@@ -17,8 +22,13 @@ const filtersReducer = (state = initialState, action) => {
                 ...state,
                 activeFilter: action.payload,
             }
+        case 'FILTERS_FETCHING_ERROR':
+            return {
+                ...state,
+                filtersLoadingStatus: 'error'
+            }
         default: return state
     }
 }
 
-export default filtersReducer;
+export default filters;

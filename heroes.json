@@ -19,106 +19,37 @@
       "element": "water"
     },
     {
-      "id": 4
-    },
-    {
-      "id": 10,
-      "name": "Первый герой",
-      "description": "Первый герой в рейтинге!",
-      "element": "fire"
-    },
-    {
-      "id": 11,
-      "name": "Первый герой",
-      "description": "Первый герой в рейтинге!",
-      "element": "fire"
-    },
-    {
-      "id": "a3d15085-0ba9-4a73-a9e3-08e80bdcb243",
-      "name": "dasdasdas",
-      "description": "dfsfds",
-      "element": "fire"
-    },
-    {
-      "id": "28cc0317-677b-4e4d-bdda-09a4e0b1b1ff",
-      "name": "fdsfds",
-      "description": "fsdfds",
-      "element": "fire"
-    },
-    {
-      "id": "e6aae033-36cb-4890-aef7-a01b429598f1",
-      "name": "ffffffffffff",
-      "description": "fffffffffffffff",
-      "element": "fire"
-    },
-    {
-      "id": "7ee049e3-6151-40be-908a-6771bf8d8f98",
-      "name": "Алексей",
-      "description": "fdsfdf",
-      "element": "fire"
-    },
-    {
-      "id": "1f7ec6b1-4d13-40ae-9768-a994b152bb1a",
-      "name": "Алексей",
-      "description": "fdsfdf",
-      "element": "fire"
-    },
-    {
-      "id": "ca6f6e52-1f85-4232-8952-d17bbd6e3708",
-      "name": "gggggggggg",
-      "description": "gggggggggggggg",
-      "element": "fire"
-    },
-    {
-      "id": "9bfeef54-4007-4ecb-bf1b-9dc499279ab5",
-      "name": "fdfdf",
-      "description": "fdsfdsfds",
-      "element": "fire"
-    },
-    {
-      "id": "17bfb01f-961a-418b-84e7-31c796f1a02c",
-      "name": "Алексей",
-      "description": "fdsffd",
-      "element": "fire"
-    },
-    {
-      "id": "86281fcb-7086-417c-946e-0b84b9baa3a5",
-      "name": "мария",
-      "description": "мария",
+      "id": "fc76c0c6-f0e5-4cdf-a733-147d48fd4fc8",
+      "name": "dsfd",
+      "description": "fsdfdsf",
       "element": "water"
-    },
-    {
-      "id": "5144a1b8-826f-47e0-876a-b3ab2ba0827c",
-      "name": "ааааа",
-      "description": "ааа",
-      "element": "earth"
     }
   ],
   "filters": [
     {
       "value": "all",
       "label": "Все",
-      "clazz" : "dark"
+      "clazz": "dark"
     },
     {
       "value": "fire",
       "label": "Огонь",
-      "clazz" : "danger"
+      "clazz": "danger"
     },
     {
       "value": "water",
       "label": "Вода",
-      "clazz" : "primary"
+      "clazz": "primary"
     },
     {
       "value": "wind",
       "label": "Ветер",
-      "clazz" : "success"
+      "clazz": "success"
     },
     {
       "value": "earth",
       "label": "Земля",
-      "clazz" : "secondary"
+      "clazz": "secondary"
     }
   ]
 }

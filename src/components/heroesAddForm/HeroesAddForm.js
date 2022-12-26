@@ -36,7 +36,7 @@ const HeroesAddForm = () => {
                 dispatch(creactHeroesFetched(data))
                 clearForm()
             })
-            .catch(() => dispatch(heroesFetchingError()))
+            // .catch(() => dispatch(heroesFetchingError()))
     }
     return (
         <form onSubmit={e=>addHeroes(e)} className="border p-4 shadow-lg rounded">
